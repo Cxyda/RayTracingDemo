@@ -1,3 +1,5 @@
+using System;
+
 namespace RayTracerDemo.Core.Models.Cameras
 {
     /// <summary>
@@ -8,10 +10,19 @@ namespace RayTracerDemo.Core.Models.Cameras
         public Vector Position { get; set; }
         public float FOV { get; set; }
 
-        public Camera(float fieldOfView)
+        private int _width;
+
+        public Camera(int width, float fieldOfView)
         {
-            // TODO: calculate position
-            Position = new Vector(0,0,-2000);
+            _width = width;
+            SetFov(fieldOfView);
+        }
+
+        private void SetFov(float fov)
+        {
+            FOV = fov;
+            var d = _width / (2.0f * Math.Tan((double)fov / 2.0));
+            Position = new Vector(0,0, d);
         }
     }
 }

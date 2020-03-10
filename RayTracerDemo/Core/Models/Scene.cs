@@ -18,7 +18,7 @@ namespace RayTracerDemo.Core.Models
 
         public Scene()
         {
-            Camera = new Camera(60);
+            Camera = new Camera(400,50);
             Geometries = new List<IRayTraceGeometry>(64);
             Lights = new List<ILightSource>(4);
         }
